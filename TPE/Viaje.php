@@ -31,7 +31,7 @@ class Viaje
     public function __toString()
     {
         $col_pasajeros = $this->convertirArregloAString($this->getCol_pasajeros());
-        return "codigoViaje: " . $this->getCodigoViaje() . "\n Destino: " . $this->getDestino() . "\n Max Pasajeros: " . $this->getCantMaximaPasajeros() . "\n Coleccion de Pasajeros: " . $col_pasajeros . "\n";
+        return "Informacion del Viaje:\n\n" . "Codigo de Viaje: " . $this->getCodigoViaje() . "\nDestino: " . $this->getDestino() . "\nMax Pasajeros: " . $this->getCantMaximaPasajeros() . "\n\nColeccion de Pasajeros:\n\n" . $col_pasajeros . "Responsable:\n\n" . $this->getResponsableViaje();
     }
 
     // getters
@@ -56,6 +56,11 @@ class Viaje
         return $this->col_pasajeros;
     }
 
+    public function getResponsableViaje()
+    {
+        return $this->responsableViaje;
+    }
+
     // setters
 
     public function setcodigoViaje($codigoViaje)
@@ -78,12 +83,19 @@ class Viaje
         $this->col_pasajeros = $col_pasajeros;
     }
 
+    public function setResponsableViaje($responsableViaje)
+    {
+        $this->responsableViaje = $responsableViaje;
+    }
+
     // metodos
 
     public function convertirArregloAString($col_pasajeros)
     {
+        $string = "";
         foreach ($col_pasajeros as $pasajero) {
-            return "Nombre: " . $pasajero->getNombre() . "\n" . "Apellido: " . $pasajero->getApellido() . "\n" . "Documento: " . $pasajero->getDni();
+            $string = $string . "Nombre: " . $pasajero->getNombre() . "\n" . "Apellido: " . $pasajero->getApellido() . "\n" . "Documento: " . $pasajero->getDni() . "\n\n";
         }
+        return $string;
     }
 }
