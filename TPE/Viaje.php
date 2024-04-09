@@ -63,7 +63,7 @@ class Viaje
 
     // setters
 
-    public function setcodigoViaje($codigoViaje)
+    public function setCodigoViaje($codigoViaje)
     {
         $this->codigoViaje = $codigoViaje;
     }
@@ -73,7 +73,7 @@ class Viaje
         $this->destino = $destino;
     }
 
-    public function setcantMaximaPasajeros($cantMaximaPasajeros)
+    public function setCantMaximaPasajeros($cantMaximaPasajeros)
     {
         $this->cantMaximaPasajeros = $cantMaximaPasajeros;
     }
@@ -94,7 +94,7 @@ class Viaje
     {
         $string = "";
         foreach ($col_pasajeros as $pasajero) {
-            $string = $string . "Nombre: " . $pasajero->getNombre() . "\n" . "Apellido: " . $pasajero->getApellido() . "\n" . "Documento: " . $pasajero->getDni() . "\n\n";
+            $string = $string . "*******************\n" . "Nombre: " . $pasajero->getNombre() . "\n" . "Apellido: " . $pasajero->getApellido() . "\n" . "Documento: " . $pasajero->getDni() . "\n" . "Teléfono: " . $pasajero->getTelefono() . "\n";
         }
         return $string;
     }
@@ -109,5 +109,46 @@ class Viaje
             }
         }
         return $existe;
+    }
+
+    public function modificarInformacionViaje($codigoViaje, $destino, $cantMaximaPasajeros)
+    {
+        $this->setCodigoViaje($codigoViaje);
+        $this->setDestino($destino);
+        $this->setCantMaximaPasajeros($cantMaximaPasajeros);
+    }
+
+    public function setearNuevaColecciónPasajeros(Pasajero $objPasajero)
+    {
+        $newCol_pasajeros = $this->getCol_pasajeros();
+        array_push($newCol_pasajeros, $objPasajero);
+        $this->setCol_pasajeros($newCol_pasajeros);
+    }
+
+    public function verificarResponsableViaje($numeroEmpleado)
+    {
+        $existe = false;
+        $responsableViajeActual = $this->getResponsableViaje();
+        if ($responsableViajeActual->getNumeroEmpleado() == $numeroEmpleado) {
+            $existe = true;
+        }
+        return $existe;
+    }
+
+    public function obtenerPasajero($dni)
+    {
+        $col_pasajeros = $this->getCol_pasajeros();
+        foreach ($col_pasajeros as $pasajero) {
+            if ($pasajero->getDni() == $dni) {
+                return $pasajero;
+            }
+        }
+    }
+
+    public function mostrarPasajeros()
+    {
+        $col_pasajeros = $this->getCol_pasajeros();
+        $stringPasajeros = $this->convertirArregloAString($col_pasajeros);
+        return $stringPasajeros;
     }
 }

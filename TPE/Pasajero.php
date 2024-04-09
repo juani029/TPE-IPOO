@@ -6,19 +6,19 @@ class Pasajero
     private $nombre;
     private $apellido;
     private $dni;
-    private $telofono;
+    private $teléfono;
 
-    public function __construct($nombre, $apellido, $dni, $telofono)
+    public function __construct($nombre, $apellido, $dni, $teléfono)
     {
         $this->nombre = $nombre;
         $this->apellido = $apellido;
         $this->dni = $dni;
-        $this->telofono = $telofono;
+        $this->teléfono = $teléfono;
     }
 
     public function __toString()
     {
-        return "Nombre: " . $this->getNombre() . "\n" . "Apellido: " . $this->getApellido() . "\n" . "Dni: " . $this->getDni() . "\n" . "Telofono: " . $this->getTelofono();
+        return "Nombre: " . $this->getNombre() . "\n" . "Apellido: " . $this->getApellido() . "\n" . "Dni: " . $this->getDni() . "\n" . "Teléfono: " . $this->getTelefono();
     }
 
     //getters 
@@ -38,9 +38,9 @@ class Pasajero
         return $this->dni;
     }
 
-    public function getTelofono()
+    public function getTelefono()
     {
-        return $this->telofono;
+        return $this->teléfono;
     }
 
     //setters 
@@ -60,8 +60,8 @@ class Pasajero
         $this->dni = $dni;
     }
 
-    public function setTelofono($telofono)
+    public function setTelefono($teléfono)
     {
-        $this->telofono = $telofono;
+        $this->teléfono = $teléfono;
     }
 }
