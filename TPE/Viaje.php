@@ -98,4 +98,16 @@ class Viaje
         }
         return $string;
     }
+
+    public function verificarPasajero($col_pasajeros, $dni)
+    {
+        $existe = false;
+        foreach ($col_pasajeros as $pasajero) {
+            if ($pasajero->getDni() == $dni) {
+                $existe = true;
+                break;
+            }
+        }
+        return $existe;
+    }
 }
